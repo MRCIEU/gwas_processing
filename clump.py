@@ -17,7 +17,7 @@ args = parser.parse_args()
 
 # args = parser.parse_args(['--bcf', 'data.bcf', '--plink_ref', '../../vcf-reference-datasets/1000g_filtered/data_maf0.01_rs', '--out', 'temp'])
 
-cmd = "{0} view -i 'L10PVAL>{1}' {2} | bcftools query -f'%ID %L10PVAL\n' | awk 'BEGIN {{print \"SNP P\"}}; {{print $1, 10^-$2}}' > {3}.tophits".format(args.bcftools_binary, -math.log10(args.clump_pval), args.bcf, args.out)
+cmd = "{0} view -i 'L10PVAL>{1}' {2} | {0} query -f'%ID %L10PVAL\n' | awk 'BEGIN {{print \"SNP P\"}}; {{print $1, 10^-$2}}' > {3}.tophits".format(args.bcftools_binary, -math.log10(args.clump_pval), args.bcf, args.out)
 os.system(cmd)
 
 cmd = "{0} --bfile {1} --clump {2} --clump-kb {3} --clump-r2 {4} --clump-p1 {5} --clump-p2 {5} --out {2}".format(args.plink_binary, args.plink_ref, args.out+".tophits", args.clump_kb, args.clump_r2, args.clump_pval)
@@ -34,7 +34,7 @@ if os.path.isfile(args.out+'.tophits.clumped'):
 				fo.write("{0}\n".format(line[2]))
 	print("Found "+str(n)+" hits")
 else:
-	subprocess.call(['touch', args.out])
+	os.system('touch' + args.out)
 	print("No hits")
 
 [os.remove(args.out + x) for x in ['.tophits.clumped', '.tophits.log', '.tophits.nosex', '.tophits'] if os.path.isfile(args.out + x)]
