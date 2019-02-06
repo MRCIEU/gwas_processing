@@ -13,7 +13,7 @@ parser.add_argument('--snplist', default='/ref/vars.txt')
 parser.add_argument('--out', required=True)
 args = parser.parse_args()
 
-cmd = "{0} query -R {1} -f'%ID %EFFECT %SE %N\n' {2} | awk 'BEGIN {{print \"SNP Z N\"}}; {{ print $1, $2/$3, $4 }}' > {3}.temp".format(args.bcftools_binary, args.snplist, args.bcf, args.out)
+cmd = "{0} norm -m- {1} | {0} query -R {2} -f'%ID %EFFECT %SE %N\n' | awk 'BEGIN {{print \"SNP Z N\"}}; {{ print $1, $2/$3, $4 }}' > {3}.temp".format(args.bcftools_binary, args.bcf, args.snplist, args.out)
 os.system(cmd)
 
 cmd = "{0}/ldsc.py --h2 {1}.temp --ref-ld-chr {2} --w-ld-chr {2} --out {1}".format(args.ldsc_repo, args.out, args.ldsc_ref)
