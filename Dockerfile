@@ -10,7 +10,8 @@ RUN echo "source activate ldsc" > ~/.bashrc
 RUN mkdir -p /ref \
 	&& curl -SL https://data.broadinstitute.org/alkesgroup/LDSCORE/eur_w_ld_chr.tar.bz2 \
 	| tar -xvjC /ref
-RUN zcat ref/eur_w_ld_chr/*gz | awk '{ print $1"\t"$3 }' | grep -v "CHR" > /ref/vars.txt
+# RUN zcat ref/eur_w_ld_chr/*gz | awk '{ print $1"\t"$3 }' | grep -v "CHR" > /ref/vars.txt
+ADD w_hm3.noMHC.snplist /ref/vars.txt
 
 RUN curl -SL https://www.dropbox.com/s/yuo7htp80hizigy/ \
 	| tar -xzvC /ref
