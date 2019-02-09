@@ -1,7 +1,7 @@
 FROM continuumio/miniconda3
 
 # Setup LDSC
-RUN git clone https://github.com/bulik/ldsc.git /ldsc
+RUN git clone https://github.com/explodecomputer/ldsc.git /ldsc
 RUN conda env create -f /ldsc/environment.yml
 RUN echo "source activate ldsc" > ~/.bashrc
 
@@ -11,7 +11,7 @@ RUN mkdir -p /ref \
 	&& curl -SL https://data.broadinstitute.org/alkesgroup/LDSCORE/eur_w_ld_chr.tar.bz2 \
 	| tar -xvjC /ref
 # RUN zcat ref/eur_w_ld_chr/*gz | awk '{ print $1"\t"$3 }' | grep -v "CHR" > /ref/vars.txt
-ADD w_hm3.noMHC.snplist /ref/vars.txt
+ADD w_hm3.noMHC.snplist.gz /ref/snplist.gz
 
 RUN curl -SL https://www.dropbox.com/s/yuo7htp80hizigy/ \
 	| tar -xzvC /ref
