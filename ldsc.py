@@ -8,7 +8,7 @@ parser = argparse.ArgumentParser(description = 'Wrapper for LD score regression'
 parser.add_argument('--bcf', required=True)
 parser.add_argument('--ldsc_repo', default='/ldsc')
 parser.add_argument('--ldsc_ref', default='/ref/eur_w_ld_chr/')
-parser.add_argument('--snplist', default='/ref/vars.txt')
+parser.add_argument('--snplist', default='/ref/snplist.gz')
 parser.add_argument('--out', required=True)
 args = parser.parse_args()
 
