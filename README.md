@@ -22,3 +22,15 @@ To perform LD score regression:
 ```
 docker exec gwas_processing ldsc.py --bcf /data/<id>/data.bcf --out /data/<id>/ldsc.txt
 ```
+
+
+## Reference data
+
+# Get LD score files
+curl -SL https://data.broadinstitute.org/alkesgroup/LDSCORE/eur_w_ld_chr.tar.bz2 | tar -xvjC /data/bgc/temp
+cp ../gwas_processing/w_hm3.noMHC.snplist.gz /data/bgc/temp/snplist.gz
+
+# Get LD reference panel
+curl -SL https://www.dropbox.com/s/yuo7htp80hizigy/ | tar -xzvC /data/bgc/temp
+
+
