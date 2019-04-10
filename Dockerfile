@@ -26,7 +26,8 @@ ADD ldsc.py /home/bin
 
 
 # Add watcher
-RUN wget -O /home/bin/watcher.py https://raw.githubusercontent.com/MRCIEU/bgc-upload-orchestrator/master/watcher.py?token=AB1fTMa-e8fsZrhTfgrH2VEnYtpvjtCBks5cgZIdwA%3D%3D && chmod 775 /home/bin/watcher.py
+ADD watcher.py /home/bin
+RUN chmod 775 /home/bin/watcher.py
 
 # Path
 ENV PATH /opt/conda/envs/ldsc/bin:/home/bin:$PATH
