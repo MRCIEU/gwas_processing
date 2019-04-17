@@ -58,8 +58,9 @@ if os.path.isfile(args.out + ".tophits.clumped"):
                 fo.write("{0}\n".format(line[2]))
     print("Found " + str(n) + " hits")
 else:
-    os.system("touch" + args.out)
     print("No hits")
+
+os.system("touch " + args.out)
 
 [
     os.remove(args.out + x)
