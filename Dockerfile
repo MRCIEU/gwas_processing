@@ -24,13 +24,5 @@ RUN wget -O plink.zip http://s3.amazonaws.com/plink1-assets/plink_linux_x86_64_2
 ADD clump.py /home/bin
 ADD ldsc.py /home/bin
 
-
-# Add watcher
-ADD watcher.py /home/bin
-RUN chmod 775 /home/bin/watcher.py
-
 # Path
 ENV PATH /opt/conda/envs/ldsc/bin:/home/bin:$PATH
-
-# Keep container persistent
-CMD tail -f /dev/null
