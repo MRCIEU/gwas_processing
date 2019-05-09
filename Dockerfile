@@ -1,7 +1,7 @@
 FROM continuumio/miniconda3
 
 # Setup LDSC
-RUN git clone https://github.com/explodecomputer/ldsc.git /ldsc
+COPY ldsc /ldsc
 RUN conda env create -f /ldsc/environment.yml
 RUN echo "source activate ldsc" > ~/.bashrc
 
