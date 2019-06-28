@@ -1,7 +1,7 @@
 # Clumping GWAS files and performing LDSC
 
 ## Clone repo & submodules
-git clone --recurse-submodules https://github.com/MRCIEU/gwas_processing
+```git clone --recurse-submodules https://github.com/MRCIEU/gwas_processing```
 
 ## Docker
 
