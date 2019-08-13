@@ -34,7 +34,6 @@ docker exec gwas_processing ldsc.py --bcf /data/<id>/data.bcf --out /data/<id>/l
 module load languages/anaconda3/2018.12
 virtualenv venv
 source ./venv/bin/activate
-pip install -r requirements.txt
 python clump.py -h
 python ldsc.py -h
 ```
