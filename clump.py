@@ -18,8 +18,8 @@ args = parser.parse_args()
 
 cmd = " ".join(
     [
-        "{0} view -i 'L10PVAL>{1}' {2} |",
-        "{0} query -f'%ID %L10PVAL\n' |",
+        "{0} view -i 'FORMAT/LP>{1}' {2} |",
+        "{0} query -f'%ID[ %LP]\n' |",
         'awk \'BEGIN {{print "SNP P"}};',
         "{{print $1, 10^-$2}}' |",
         "awk '!seen[$1]++' > {3}.tophits",
