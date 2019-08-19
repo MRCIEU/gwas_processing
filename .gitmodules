@@ -1,4 +1,4 @@
 [submodule "ldsc"]
 	path = ldsc
-	url = git@ieugit-scmv-d0.epi.bris.ac.uk:ik18445/ldsc.git
-	branch = ofelia
+	url = git@github.com:explodecomputer/ldsc.git
+	branch = master
