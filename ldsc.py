@@ -7,7 +7,7 @@ import os
 
 parser = argparse.ArgumentParser(description="Wrapper for LD score regression")
 parser.add_argument("--bcf", required=True)
-parser.add_argument("--ldsc_repo", default="/ldsc")
+parser.add_argument("--ldsc_repo", default="./ldsc")
 parser.add_argument("--ldsc_ref", default="/data/ref/eur_w_ld_chr/")
 parser.add_argument("--snplist", default="/data/ref/snplist.gz")
 parser.add_argument("--out", required=True)
