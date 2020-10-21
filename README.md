@@ -19,13 +19,13 @@ docker run -d --name gwas_processing -v /path/to/data:/data gwas_processing
 To perform clumping:
 
 ```
-docker exec gwas_processing clump.py --bcf /data/<id>/data.bcf --out /data/<id>/clump.txt
+docker run -v /path/to/data:/data gwas_processing clump.py --bcf /data/path/to/data.vcf.gz --out /data/path/to/clump.txt
 ```
 
 To perform LD score regression:
 
 ```
-docker exec gwas_processing ldsc.py --bcf /data/<id>/data.bcf --out /data/<id>/ldsc.txt
+docker run -v /path/to/data:/data gwas_processing ldsc.py --bcf /data/path/to/data.vcf.gz --out /data/path/to/ldsc.txt
 ```
 
 ## BC4
@@ -40,13 +40,16 @@ python ldsc.py -h
 
 ## Reference data
 
-# Get LD score files
+The `/data` directory linked in the docker run commands above should have a directory called `ref` containing LD score files and an LD reference panel e.g.
+
+## Get LD score files
+
 ```
-curl -SL https://data.broadinstitute.org/alkesgroup/LDSCORE/eur_w_ld_chr.tar.bz2 | tar -xvjC /data/bgc/temp
+curl -SL https://data.broadinstitute.org/alkesgroup/LDSCORE/eur_w_ld_chr.tar.bz2 | tar -xvjC /data/ref
 cp ../gwas_processing/w_hm3.noMHC.snplist.gz /data/bgc/temp/snplist.gz
 ```
 
 # Get LD reference panel
 ```
-curl -SL https://www.dropbox.com/s/yuo7htp80hizigy/ | tar -xzvC /data/bgc/temp
+curl -SL https://www.dropbox.com/s/yuo7htp80hizigy/ | tar -xzvC /data/ref
 ```
